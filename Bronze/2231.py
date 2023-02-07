@@ -4,7 +4,7 @@ def make_result(s):
     sum, result = 0, 0
     for x in str(i):
       sum += int(x)
-    result = int(sum) + i
+    result += (int(sum) + i)
     if result == int(N):
       print(i)
       k = 1
