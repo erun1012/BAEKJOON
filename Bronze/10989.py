@@ -1,6 +1,6 @@
 import sys
 c = int(sys.stdin.readline())
-N_list = [0] * 10000
+N_list = [0] * 10001
 
 for i in range(c):
   N = int(sys.stdin.readline())
