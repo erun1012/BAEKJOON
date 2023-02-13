@@ -1,28 +1,19 @@
-N = int(input())
-import math
+import sys
+
+N = int(sys.stdin.readline())
+N_list = list(map(int, sys.stdin.readline().split()))
+count = 0
 
 # 소수 판별 함수
 def is_prime_number(x):
-    # 2부터 x의 제곱근까지의 모든 수를 확인하며
-    for i in range(2, int(math.sqrt(x)) + 1):
-        # x가 해당 수로 나누어떨어진다면
-        if x % i == 0:
-            return False # 소수가 아님
-    return True # 소수임
+  if x == 1:
+    return 0
+  for i in range(2, x):
+      if x % i == 0:
+          return 0
+  return 1
 
-print(is_prime_number(4)) # 4는 소수가 아님
-print(is_prime_number(7)) # 7은 소수임
-
-n = int(input())
-data = list(map(int, input().split()))
-count = 0
-
-for x in data:
-  for i in range(2, x+1):
-    if x % i == 0:
-      if x == i:
-        count += 1
-      
-      break
+for j in N_list:
+  count += is_prime_number(j)
 
 print(count)
