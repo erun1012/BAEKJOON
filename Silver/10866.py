@@ -62,4 +62,4 @@ for i in range(N):
   elif c[0] == 'front':
     front()
   elif c[0] == 'back':
-    back(
+    back()
