@@ -10,6 +10,7 @@ for i in range(N):
 
 for j in N_deque:
   ranking = 1
+  
   for k in N_deque:
     if j[0] < k[0] and j[1] < k[1]:
       ranking += 1
