@@ -1,15 +1,16 @@
 import sys
-from copy import deepcopy
+from collections import deque
 
 N = int(sys.stdin.readline().rstrip())
-N_list = []
-Result = [0]*N
+N_deque = deque(range(0,N))
 
 for i in range(N):
   x, y = map(int, sys.stdin.readline().rstrip().split())
-  N_list.append([x, y])
-X_list = deepcopy(N_list)
-Y_list = deepcopy(N_list)
-X_list.sort(key=lambda x: x[0])
-Y_list.sort(key=lambda y: y[1])
-print(N_list,"\n", X_list,"\n", Y_list)
+  N_deque[i] = [x, y]
+
+for j in N_deque:
+  ranking = 1
+  for k in N_deque:
+    if j[0] < k[0] and j[1] < k[1]:
+      ranking += 1
+  print(ranking, end= " ")
