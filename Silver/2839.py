@@ -1,16 +1,19 @@
 import sys
 
 N = int(sys.stdin.readline().rstrip())
-
-# sugar = int(input())
-
-# bag = 0
-# while sugar >= 0 :
-#     if sugar % 5 == 0 :  # 5의 배수이면
-#         bag += (sugar // 5)  # 5로 나눈 몫을 구해야 정수가 됨
-#         print(bag)
-#         break
-#     sugar -= 3  
-#     bag += 1  # 5의 배수가 될 때까지 설탕-3, 봉지+1
-# else :
-#     print(-1)
+if N%5 == 0:
+  print(int(N/5))
+else:
+  count = 0
+  while N > 0:
+    N -= 3
+    count += 1
+    if N%5 == 0:
+      print(int(N/5+count))
+      break
+    elif N == 1 or N == 2:
+      print(-1)
+      break
+    elif N == 0:
+      print(count)
+      break
