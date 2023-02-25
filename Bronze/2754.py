@@ -1,7 +1,13 @@
 import sys
-from collections import deque
 
-g_list = ['A+', 'A0', 'A-', 'B+', 'B0', 'B-', 'C+', 'C0', 'C-', 'D+', 'D0', 'D-', 'F']
-G_deque = deque(['A', 4.0], ['B', 4.0], ['C', 4.0], ['D', 4.0], ['F', 0.0])
+G_list = [['A', 4.0], ['B', 3.0], ['C', 2.0], ['D', 1.0], [0], ['F', 0.0]]
 grade = str(sys.stdin.readline().rstrip())
 
+point = G_list[ord(grade[0])-65][1]
+
+if grade[-1] == "+":
+  point += 0.3
+elif grade[-1] == "-":
+  point -= 0.3
+
+print(point)
