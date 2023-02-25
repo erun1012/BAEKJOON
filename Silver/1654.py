@@ -1,28 +1,44 @@
 import sys
-from collections import deque
+
+def Cut(li, n, ma):
+  count = 0
+  for j in range(0, len(li)):
+    count += (li[j] // n)
+    if count > ma:
+      break
+  return count
 
 N, K = map(int, sys.stdin.readline().rstrip().split())
-length_deque = deque()
+N_list = [0] * N
 
 for i in range(N):
-  length_deque.append(int(sys.stdin.readline().rstrip()))
+  N_list[i] = int(sys.stdin.readline().rstrip())
 
-max = sum(length_deque) // 11
+N_list.sort()
 
-j = 0
+start = 0
+end = (2**31)-1
+repe = 0
 while True:
-  count_deque = deque()
-  j += 1000
-  for k in length_deque:
-    count_deque.append(int(k//j))
-  if sum(count_deque) <= K:
-    print(j, count_deque)
+  if N == 1 and K == 1:
+    print(N)
     break
+  mid = (start + end) // 2
+  if mid == repe:
+    print(mid)
+    break
+  value = Cut(N_list, mid, K)
+  if value == K:
+    for k in range(mid, end):
+      value = Cut(N_list, k, K)
+      if value < K:
+        print(k - 1)
+        break
+    break
+  elif value > K:
+    start = mid + 1
+    repe = mid
+  elif value < K:
+    end = mid -1
+    repe = mid
 
-for l in range(100):
-  j += 1
-  count = 0
-  for k in length_deque:
-    count += (k//j)
-  if count > K:
-    result
