@@ -9,9 +9,7 @@ def Sum(LIST, Leng):
 
 N, M = map(int, sys.stdin.readline().rstrip().split())
 
-N_list = list(map(int, sys.stdin.readline().rstrip().split()))
-
-N_list.sort()
+N_list = list(sorted(map(int, sys.stdin.readline().rstrip().split())))
 
 start, end = 0, N_list[-1]
 max = 0
