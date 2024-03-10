@@ -1,12 +1,10 @@
-from sys import stdin
+import sys
 
-class Node(object):
+class Node:
     def __init__(self, item, left, right):
         self.item = item
         self.left = left
         self.right = right
-
-tree = dict()
 
 def preorder(node):
     print(node.item, end='')
@@ -14,27 +12,25 @@ def preorder(node):
         preorder(tree[node.left])
     if node.right != '.':
         preorder(tree[node.right])
-    
 def inorder(node):
     if node.left != '.':
-        preorder(tree[node.left])
+        inorder(tree[node.left])
     print(node.item, end='')
     if node.right != '.':
-        preorder(tree[node.right])
-
+        inorder(tree[node.right])
 def postorder(node):
     if node.left != '.':
-        preorder(tree[node.left])
+        postorder(tree[node.left])
     if node.right != '.':
-        preorder(tree[node.right])
+        postorder(tree[node.right])
     print(node.item, end='')
-
-N = int(stdin.readline())
-
-for _ in range(N):
-    item, left, right = map(str, stdin.readline().rstrip().split())
-    tree[item] = Node(item, left, right)
     
+tree = dict()
+
+for _ in range(int(sys.stdin.readline())):
+    item, left, right = sys.stdin.readline().split()
+    tree[item] = Node(item, left, right)
+
 preorder(tree['A'])
 print()
 inorder(tree['A'])
