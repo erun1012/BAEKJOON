@@ -1,5 +1,4 @@
 from sys import stdin
-import copy
 
 N = int(stdin.readline())
 
