@@ -34,5 +34,5 @@ for i in range(M):
 
 for i in range(1, N+1):
     graph[i].sort()
-print(dfs(graph, V))
-print(bfs(graph, V))
+print(' '.join(map(str, dfs(graph, V))))
+print(' '.join(map(str, bfs(graph, V)))))
